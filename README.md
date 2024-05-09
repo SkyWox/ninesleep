@@ -33,9 +33,38 @@ To use:
 - Remove the glue from the MicroSD slot that has been revealed
 - Remove the MicroSD card from the slot
 - Modify the rootfs.tar.gz file located at `/opt/images/Yocto/rootfs.tar.gz` on the first partition of the MicroSD card.
-    - Set the root password in `/etc/shadow`
-    - Add a `NetworkManager` configuration file at `/etc/NetworkManager/system-connections/<something>.nmconnection`
-    - Add your SSH key to `/etc/ssh/authorized_keys` (optionally, remove Eight Sleep's key while you're there)
+    - Set the root password in `/etc/shadow`. Ensure the file permissions are `400`
+    - Add the following `NetworkManager` configuration file at `/etc/NetworkManager/system-connections/customer-wifi.nmconnection`. Replace WIFI_NAME and WIFI_PASSWORD with the credentials to your wifi connection. Ensure the file permissions are `600`
+    ```
+    [connection]
+    id=customer-wifi
+    uuid=632eb932-dd3c-4009-9556-7fa90292b977
+    type=wifi
+    interface-name=wlan0
+    permissions=
+    
+    [wifi]
+    mac-address-blacklist=
+    mode=infrastructure
+    ssid=WIFI_NAME
+    
+    [wifi-security]
+    auth-alg=open
+    key-mgmt=wpa-psk
+    psk=WIFI_PASSWORD
+    
+    [ipv4]
+    dns-search=
+    method=auto
+    
+    [ipv6]
+    addr-gen-mode=stable-privacy
+    dns-search=
+    method=auto
+    
+    [proxy]
+    ```
+    - Add your SSH key to `/etc/ssh/authorized_keys` (optionally, remove Eight Sleep's key while you're there). Ensure the file permissions are `644`
 - Insert the MicroSD card
 - Insert the logic daughterboard
 - Reattach the antenna
