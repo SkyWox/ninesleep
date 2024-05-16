@@ -10,6 +10,9 @@ Clearly, this project is not endorsed by Eight Sleep. You're responsible for any
 
 This has currently only been tested on a Pod 3 based on the [Variscite VAR-SOM-MX8M-MINI](https://www.variscite.com/product/system-on-module-som/cortex-a53-krait/var-som-mx8m-mini-nxp-i-mx8m-mini/).
 
+Example model numbers (can be found on the back of the unit under the hose connection:
+- 10503
+
 Example board: 
 
 ![picture of a Pod 3 circuit board](doc_img/board.jpg)
