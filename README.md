@@ -36,8 +36,10 @@ To use:
 - Remove the glue from the MicroSD slot that has been revealed
 - Remove the MicroSD card from the slot
 - Modify the rootfs.tar.gz file located at `/opt/images/Yocto/rootfs.tar.gz` on the first partition of the MicroSD card.
-    - Set the root password in `/etc/shadow`. Ensure the file permissions are `400`
-    - Add the following `NetworkManager` configuration file at `/etc/NetworkManager/system-connections/customer-wifi.nmconnection`. Replace WIFI_NAME and WIFI_PASSWORD with the credentials to your wifi connection. Ensure the file permissions are `600`
+    - Set the root password in `/etc/shadow`.
+        - Ensure the file permissions are `400`:
+            - `sudo chmod 400 shadow` 
+    - Add the following `NetworkManager` configuration file at `/etc/NetworkManager/system-connections/customer-wifi.nmconnection`. Replace WIFI_NAME and WIFI_PASSWORD with the credentials to your wifi connection.
     ```
     [connection]
     id=customer-wifi
@@ -67,6 +69,8 @@ To use:
     
     [proxy]
     ```
+    - Ensure the file permissions are `600`:
+      - `sudo chmod 600 customer-wifi.nmconnection`
     - Add your SSH key to `/etc/ssh/authorized_keys` (optionally, remove Eight Sleep's key while you're there). Ensure the file permissions are `644`
 - Insert the MicroSD card
 - Insert the logic daughterboard
